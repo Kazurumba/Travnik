@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Травникъ — Библиотека фитохимии</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C16 2 26 12 26 22C26 28.18 21.52 30 16 30C10.48 30 6 28.18 6 22C6 12 16 2 16 2Z' fill='%233a7d44'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-user-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></symbol>
+<symbol id="i-seedling" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="M8 8a5 5 0 014-2 5 5 0 014 2"/></symbol>
+<symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 9V3h4v6l5 8.5a2 2 0 01-1.7 2.5H6.7a2 2 0 01-1.7-2.5L10 9z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="i-bm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2z"/></symbol>
+<symbol id="i-bm-f" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="m19 21-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2z"/></symbol>
+<symbol id="i-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+<symbol id="i-heart-f" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></symbol>
+<symbol id="i-comment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/></symbol>
+<symbol id="i-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+<symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+<symbol id="i-mortar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 14h18l-1.5 5a2 2 0 01-1.9 1.5H6.4A2 2 0 014.5 19L3 14z"/><path d="M5 14V9a7 7 0 0114 0v5"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></symbol>
+<symbol id="i-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></symbol>
+<symbol id="i-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m2 7 4-4h12l4 4"/><path d="M2 7h20v14a2 2 0 01-2 2H4a2 2 0 01-2-2V7z"/><path d="M12 11v5"/><path d="M8 11h8v5H8z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-seedling2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="i-chevron-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></symbol>
+<symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+<symbol id="i-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="M8 8a5 5 0 014-2 5 5 0 014 2"/></symbol>
+<symbol id="i-leaf-simple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 019.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/></symbol>
+<symbol id="i-shrub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V10"/><path d="M5 14H2a8 8 0 0116 0h-3"/><path d="M8 10a4 4 0 014-2 4 4 0 014 2"/></symbol>
+<symbol id="i-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></symbol>
+<symbol id="i-root" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="M12 8c-2 0-4 2-4 4s2 4 4 4 4-2 4-4-2-4-4-4z"/><path d="M8 12H4M20 12h-4M12 16v4"/></symbol>
+<symbol id="i-bark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 2v20M16 2v20M4 8h16M4 16h16"/></symbol>
+<symbol id="i-fruit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a4 4 0 014 4"/></symbol>
+<symbol id="i-seed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></symbol>
+<symbol id="i-whole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="M8 8a5 5 0 014-2 5 5 0 014 2"/><circle cx="12" cy="18" r="2"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></symbol>
+<symbol id="i-atom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M12 8a8 4 0 100 8 8 4 0 100-8z" transform="rotate(0 12 12)"/><path d="M12 8a8 4 0 100 8 8 4 0 100-8z" transform="rotate(60 12 12)"/><path d="M12 8a8 4 0 100 8 8 4 0 100-8z" transform="rotate(120 12 12)"/></symbol>
+</svg>
+<audio id="ra" preload="none"></audio>
+<header class="header">
+<div class="header-left"><div class="brand" onclick="showPage('main')"><div class="brand-icon"><svg><use href="#i-leaf"/></svg></div><span class="brand-title">Травникъ</span></div></div>
+<div class="header-search">
+<div class="search-input-wrap">
+<svg class="s-ico" width="12" height="12"><use href="#i-search"/></svg>
+<input type="text" placeholder="поиск трав, рецептов, веществ..." id="si">
+</div>
+</div>
+<div class="header-right">
+<div id="global-db-status" class="db-status-badge loading" title="Статус базы данных">
+<span class="db-dot"></span>
+<span class="db-text">Подключение...</span>
+</div>
+<button class="hdr-btn" onclick="oNotiM()"><svg><use href="#i-bell"/></svg><span class="bdg" id="noti-bdg" style="display:none">0</span></button>
+<div id="ha"></div>
+</div>
+</header>
+<div class="main-wrap">
+<div class="page active" id="pg-main">
+<div class="main-layout">
+<aside class="sidebar-left">
+<nav class="sidebar-nav">
+<div class="nav-item act" onclick="sN(this);showPage('main')"><svg><use href="#i-home"/></svg> Главная</div>
+<div class="nav-item" onclick="sN(this);rA()&&oPr()"><svg><use href="#i-user"/></svg> Мой профиль</div>
+<div class="nav-item" onclick="sN(this)"><svg><use href="#i-msg"/></svg> Сообщения <span class="nb">3</span></div>
+<div class="nav-item" onclick="sN(this)"><svg><use href="#i-user-plus"/></svg> Друзья <span class="nb">2</span></div>
+<div class="nav-item" onclick="sN(this);showPage('communities')"><svg><use href="#i-users"/></svg> Сообщества</div>
+<div class="ndiv"></div>
+<div class="sst">Травничество</div>
+<div class="nav-item" onclick="sN(this);showPage('herb')"><svg><use href="#i-seedling"/></svg> Травник</div>
+<div class="nav-item" onclick="sN(this)"><svg><use href="#i-mortar"/></svg> Рецепты</div>
+<div class="nav-item" onclick="sN(this)"><svg><use href="#i-flask"/></svg> Настойки</div>
+<div class="nav-item" onclick="sN(this);showPage('reference')"><svg><use href="#i-book"/></svg> Справочник</div>
+<div class="nav-item" onclick="sN(this);showPage('calendar')"><svg><use href="#i-calendar"/></svg> Календарь <span class="cbdg" id="cal-bdg" style="display:none">0</span></div>
+<div class="ndiv"></div>
+<div class="nav-item" onclick="sN(this);showPage('market')"><svg><use href="#i-shop"/></svg> Рынок <span class="cbdg" id="cbn" style="display:none">0</span></div>
+<div class="ndiv"></div>
+<div class="nav-item" id="nav-bm" onclick="sN(this);showPage('bookmarks')"><svg><use href="#i-bm"/></svg> Закладки <span class="cbdg" id="bm-bdg" style="display:none">0</span></div>
+<div class="nav-item" onclick="sN(this);oSt()"><svg><use href="#i-cog"/></svg> Настройки</div>
+</nav>
+<div class="rc" style="margin-top:14px">
+<div class="mplayer">
+<div class="mpl"><div class="eqb" id="eqb"><div class="eb" style="height:2px"></div><div class="eb" style="height:5px"></div><div class="eb" style="height:2px"></div><div class="eb" style="height:7px"></div></div> Travnik FM</div>
+<button class="mpb" id="pt" onclick="tP()"><svg><use href="#i-play"/></svg></button>
+<div class="mpst" id="mps">Ambient Chillout</div>
+<div class="vw"><svg><use href="#i-vol"/></svg><input type="range" class="vs" min="0" max="100" value="40" oninput="document.getElementById('ra').volume=this.value/100"></div>
+</div>
+</div>
+</aside>
+<main class="feed" id="feed">
+<div class="pc"><div class="pc-top"><div class="avatar-wrap" id="fa" style="width:40px;height:40px;font-size:13px;cursor:default"><span class="at">?</span></div><div class="pc-inp" onclick="rA()&&oPM()">Что нового в вашем саду?</div></div><div class="pc-acts"><button class="ca" onclick="rA()&&oPM()"><svg><use href="#i-img"/></svg> Фото</button><button class="ca" onclick="rA()&&oPM()"><svg><use href="#i-video"/></svg> Видео</button><button class="ca" onclick="rA()&&oPM()"><svg><use href="#i-seedling2"/></svg> Рецепт</button></div></div>
+<div class="loading-feed" id="feed-loading" style="text-align:center;padding:40px;color:var(--tx-m)">Загрузка записей с сервера...</div>
+</main>
+<aside class="sidebar-right">
+<div class="rc"><div class="pm2">
+<div class="avatar-wrap" id="sa" style="width:76px;height:76px;font-size:24px;border:3px solid var(--ac)" onclick="rA()&&oPr()"><span class="at">?</span></div>
+<div class="pmn" id="sn">Гость</div><div class="pms" id="ss">Войдите для полного доступа</div>
+<div id="s-ci" style="font-size:11px;color:var(--tx-m);margin-top:4px;display:none"></div>
+<div id="s-bi" style="font-size:11px;color:var(--tx-s);margin-top:4px;font-style:italic;display:none;max-width:200px;margin-left:auto;margin-right:auto"></div>
+</div></div>
+<div class="rc"><div class="rct"><svg><use href="#i-star"/></svg> Трава дня</div><div class="hod"><div class="avatar-wrap" style="width:56px;height:56px;font-size:18px;border-radius:10px;cursor:default"><span class="at">Р</span></div><div class="hodi"><div class="hon">Ромашка аптечная</div><div class="hol">Matricaria chamomilla</div><div class="hodsc">Противовоспалительное.</div></div></div></div>
+<div class="rc"><div class="rct"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--on);animation:pls 2s infinite"></span> Онлайн</div><div class="fog" id="fg"></div></div>
+<div class="rc"><div class="rct"><svg><use href="#i-users"/></svg> Группы</div><div id="gl"></div></div>
+</aside>
+</div>
+</div>
+<div class="bm-page" id="pg-bookmarks">
+<div class="bm-header">
+<div class="back-link" onclick="showPage('main')"><svg><use href="#i-arrow-left"/></svg> Главная</div>
+<h2>Закладки <span class="bm-count" id="bm-count"></span></h2>
+</div>
+<div class="bm-list" id="bm-list"></div>
+</div>
+<div class="cal-page page" id="pg-calendar">
+<div style="margin-bottom:16px"><button class="bt bt2" onclick="showPage('main')"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><use href="#i-arrow-left"/></svg> Назад</button></div>
+<div class="cal-nav">
+<button class="cal-btn" onclick="calPrev()"><svg><use href="#i-chevron-l"/></svg></button>
+<h2 id="cal-title" onclick="calToday()"></h2>
+<button class="cal-btn" onclick="calNext()"><svg><use href="#i-chevron-r"/></svg></button>
+</div>
+<div class="cal-grid" id="cal-grid"></div>
+</div>
+<div class="page" id="pg-market">
+<div style="margin-bottom:16px"><button class="bt bt2" onclick="showPage('main')"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><use href="#i-arrow-left"/></svg> Назад</button></div>
+<div class="market-hero"><h2>Рынок трав</h2><p>Сборы, настойки, мази и чаи от травников со всей России</p></div>
+<div class="market-bg">
+<div class="mkt"><button class="mktb on" id="mtp" onclick="mTab('p')">Все товары</button><button class="mktb" id="mtm" onclick="mTab('m')">Мои товары</button><button class="mktb" id="mtc" onclick="mTab('c')">Корзина <span class="cbdg" id="cbt" style="display:none">0</span></button></div>
+<div id="mp"></div><div id="mm" style="display:none"></div><div id="mc" style="display:none"></div>
+</div>
+</div>
+<div class="page" id="pg-communities">
+<div style="margin-bottom:16px"><button class="bt bt2" onclick="showPage('main')"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><use href="#i-arrow-left"/></svg> Назад</button></div>
+<div style="text-align:center;padding:80px 20px;color:var(--tx-m)">
+<svg style="width:64px;height:64px;margin-bottom:16px;opacity:.3"><use href="#i-users"/></svg>
+<h2 style="font-size:20px;margin-bottom:8px">Сообщества</h2>
+<p>Раздел в разработке. Здесь будут группы по интересам, тематические форумы и обсуждения.</p>
+</div>
+</div>
+<div class="ref-page page" id="pg-reference">
+<div style="margin-bottom:16px"><button class="bt bt2" onclick="showPage('main')"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><use href="#i-arrow-left"/></svg> Назад</button></div>
+<div class="ref-hero">
+<h2>📖 Энциклопедия веществ</h2>
+<p>Полный справочник биологически активных соединений лекарственных растений: их роль в организме, источники в травах и последствия дефицита</p>
+<div class="ref-search">
+<input class="fi" type="text" id="ref-search" placeholder="Поиск вещества..." oninput="renderRef()" style="text-align:center">
+</div>
+</div>
+<div class="ref-tabs" id="ref-tabs"></div>
+<div class="ref-grid" id="ref-grid"></div>
+</div>
+<div class="herb-page page" id="pg-herb">
+<div class="herb-header">
+<div class="back-link" onclick="showPage('main')"><svg><use href="#i-arrow-left"/></svg> Главная</div>
+<h2>🌿 Библиотека фитохимии</h2>
+<div class="herb-actions">
+<button class="bt bt1" onclick="oHerbForm()"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-plus"/></svg> Добавить растение</button>
+<div style="display:flex;gap:8px;margin-left:auto">
+<button class="bt bt2" onclick="document.getElementById('import-file').click()"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-upload"/></svg> Импорт JSON</button>
+<button class="bt bt2" onclick="exportHerbs()"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-download"/></svg> Экспорт JSON</button>
+</div>
+<input type="file" id="import-file" accept=".json" style="display:none" onchange="importHerbs(this)">
+</div>
+</div>
+<div class="herb-search">
+<input class="fi" type="text" id="herb-search" placeholder="Поиск по названию или латинскому имени..." oninput="renderHerbs()">
+<select class="fi" id="herb-type-filter" onchange="renderHerbs()" style="min-width:150px">
+<option value="">Все типы растений</option>
+<option value="herb">Трава</option>
+<option value="shrub">Кустарник</option>
+<option value="tree">Дерево</option>
+<option value="flower">Цветок</option>
+<option value="mushroom">Гриб</option>
+<option value="lichen">Лишайник</option>
+</select>
+</div>
+<div class="herb-filters">
+<div class="herb-filter" onclick="toggleChemFilter('tannins',this)"><svg><use href="#i-flask"/></svg> Дубильные</div>
+<div class="herb-filter" onclick="toggleChemFilter('flavonoids',this)"><svg><use href="#i-flask"/></svg> Флавоноиды</div>
+<div class="herb-filter" onclick="toggleChemFilter('alkaloids',this)"><svg><use href="#i-flask"/></svg> Алкалоиды</div>
+<div class="herb-filter" onclick="toggleChemFilter('essentialOils',this)"><svg><use href="#i-flask"/></svg> Эфирные масла</div>
+<div class="herb-filter" onclick="toggleChemFilter('saponins',this)"><svg><use href="#i-flask"/></svg> Сапонины</div>
+<div class="herb-filter" onclick="toggleChemFilter('vitC',this)"><svg><use href="#i-flask"/></svg> Витамин C</div>
+<div class="herb-filter" onclick="toggleChemFilter('vitE',this)"><svg><use href="#i-flask"/></svg> Витамин E</div>
+<div class="herb-filter" onclick="toggleChemFilter('iron',this)"><svg><use href="#i-flask"/></svg> Железо</div>
+<button class="bt bt2" onclick="clearFilters()" style="padding:6px 12px;font-size:11px">✕ Очистить</button>
+</div>
+<div class="color-legend">
+<span class="leg-title">Цвет верхней рамки = основное свойство травы:</span>
+<span class="leg-item"><span class="leg-color" style="background:#e74c3c"></span> Противовоспалительное</span>
+<span class="leg-item"><span class="leg-color" style="background:#3498db"></span> Мочегонное</span>
+<span class="leg-item"><span class="leg-color" style="background:#9b59b6"></span> Успокоительное</span>
+<span class="leg-item"><span class="leg-color" style="background:#f1c40f"></span> Желчегонное</span>
+<span class="leg-item"><span class="leg-color" style="background:#c0392b"></span> Кровоостанавливающее</span>
+<span class="leg-item"><span class="leg-color" style="background:#27ae60"></span> Иммуномодулирующее</span>
+<span class="leg-item"><span class="leg-color" style="background:#e67e22"></span> Антимикробное</span>
+<span class="leg-item"><span class="leg-color" style="background:#1abc9c"></span> Антиоксидантное</span>
+<span class="leg-item"><span class="leg-color" style="background:#34495e"></span> Сердечно-сосудистое</span>
+<span class="leg-item"><span class="leg-color" style="background:#16a085"></span> Пищеварительное</span>
+</div>
+<div class="herb-grid" id="herb-grid"></div>
+<div class="herb-empty" id="herb-empty" style="display:none">
+<svg><use href="#i-seedling"/></svg>
+<p>Травы не найдены</p>
+<span>Попробуйте изменить параметры поиска или добавьте новую запись</span>
+</div>
+</div>
+<div class="herb-detail" id="herb-detail">
+<div style="margin-bottom:16px">
+<button class="back-link" onclick="showHerbList()"><svg><use href="#i-arrow-left"/></svg> Назад к списку</button>
+<button class="bt bt2" onclick="editCurrentHerb()" style="margin-left:8px"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-edit"/></svg> Редактировать</button>
+</div>
+<div id="herb-detail-content"></div>
+</div>
+<div class="mo" id="herb-form-modal">
+<div class="ml" style="width:720px;max-height:90vh">
+<div class="mh">
+<div class="mtl" id="herb-form-title">Добавить траву</div>
+<button class="mc" onclick="cHerbForm()"><svg><use href="#i-x"/></svg></button>
+</div>
+<div class="mb" style="max-height:70vh;overflow-y:auto">
+<form class="herb-form" id="herb-form" onsubmit="saveHerb(event)">
+<input type="hidden" id="hf-id">
+<div class="fr">
+<div class="fg" style="flex:2"><label class="fl">Название (рус.) *</label><input class="fi" type="text" id="hf-name" required></div>
+<div class="fg" style="flex:2"><label class="fl">Латинское название *</label><input class="fi" type="text" id="hf-latin" required placeholder="например: Matricaria chamomilla"></div>
+</div>
+<div class="fr">
+<div class="fg">
+<label class="fl">Тип растения *</label>
+<select class="fi" id="hf-type" required>
+<option value="herb">Трава</option>
+<option value="shrub">Кустарник</option>
+<option value="tree">Дерево</option>
+<option value="flower">Цветок</option>
+<option value="mushroom">Гриб</option>
+<option value="lichen">Лишайник</option>
+</select>
+</div>
+<div class="fg">
+<label class="fl">Используемые части</label>
+<div class="parts-grid">
+<label class="part-check"><input type="checkbox" name="hf-parts" value="leaf">Лист</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="flower">Цветок</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="root">Корень</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="bark">Кора</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="fruit">Плод</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="seed">Семя</label>
+<label class="part-check"><input type="checkbox" name="hf-parts" value="whole">Всё растение</label>
+</div>
+</div>
+</div>
+<div class="fg">
+<label class="fl">Фотографии травы (можно несколько)</label>
+<div class="pua" id="herb-pua"><svg><use href="#i-upload"/></svg><span>Добавить фото</span><input type="file" accept="image/*" multiple id="herb-photos" onchange="handleHerbPhotos(this)"></div>
+<div class="ppv" id="herb-ppv"></div>
+</div>
+<div class="fst" style="margin:18px 0 12px">Химические вещества</div>
+<div class="fg">
+<label class="fl">Основные соединения</label>
+<div class="chem-grid">
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="tannins">Дубильные</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="flavonoids">Флавоноиды</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="alkaloids">Алкалоиды</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="essentialOils">Эфирные масла</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="saponins">Сапонины</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="glycosides">Гликозиды</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="organicAcids">Орг. кислоты</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="polysaccharides">Полисахариды</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="coumarins">Кумарины</label>
+<label class="chem-check"><input type="checkbox" name="hf-chem" value="anthocyanins">Антоцианы</label>
+</div>
+</div>
+<div class="fr">
+<div class="fg">
+<label class="fl">Витамины</label>
+<div class="vit-grid">
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="A">A</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="C">C</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="E">E</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="K">K</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="B1">B₁</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="B2">B₂</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="B6">B₆</label>
+<label class="vit-check"><input type="checkbox" name="hf-vit" value="B12">B₁₂</label>
+</div>
+</div>
+<div class="fg">
+<label class="fl">Минералы</label>
+<div class="min-grid">
+<label class="min-check"><input type="checkbox" name="hf-min" value="iron">Fe</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="zinc">Zn</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="magnesium">Mg</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="calcium">Ca</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="potassium">K</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="selenium">Se</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="manganese">Mn</label>
+<label class="min-check"><input type="checkbox" name="hf-min" value="copper">Cu</label>
+</div>
+</div>
+</div>
+<div class="fg"><label class="fl">Показания и симптомы (через запятую)</label><textarea class="fta" id="hf-indications" rows="3" placeholder="Головная боль, бессонница, простуда..."></textarea></div>
+<div class="fg"><label class="fl">Сбор и заготовка</label><textarea class="fta" id="hf-harvest" rows="3" placeholder="Время цветения, условия сушки..."></textarea></div>
+<div class="fg"><label class="fl">Терапевтические свойства (через запятую)</label><input class="fi" type="text" id="hf-props" placeholder="противовоспалительное, успокоительное"></div>
+<div class="fg"><label class="fl">Противопоказания (через запятую)</label><input class="fi" type="text" id="hf-contr" placeholder="беременность, гипотония"></div>
+<div class="fg"><label class="fl">Способы приготовления и применения</label><textarea class="fta" id="hf-prep" rows="4" placeholder="Настой: 1 ст.л. на стакан кипятка..."></textarea></div>
+<div class="fg"><label class="fl">Дополнительные заметки</label><textarea class="fta" id="hf-notes" rows="3"></textarea></div>
+<div class="form-actions">
+<button type="button" class="bt bt2" onclick="cHerbForm()">Отмена</button>
+<button type="submit" class="bt bt1">💾 Сохранить в БД</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<!-- МОДАЛКА ДЕТАЛЕЙ ВЕЩЕСТВА (СПРАВОЧНИК) -->
+<div class="mo" id="ref-detail-m">
+<div class="ml" style="width:720px;max-height:90vh">
+<div class="mh">
+<div class="mtl" id="ref-detail-title">Вещество</div>
+<button class="mc" onclick="cRefDetail()"><svg><use href="#i-x"/></svg></button>
+</div>
+<div class="mb" id="ref-detail-body" style="max-height:70vh;overflow-y:auto"></div>
+<div class="mf">
+<button class="bt bt2" id="ref-edit-btn" onclick="openRefEdit()"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-edit"/></svg> Редактировать</button>
+<button class="bt bt1" onclick="cRefDetail()">Закрыть</button>
+</div>
+</div>
+</div>
+
+<!-- МОДАЛКА РЕДАКТИРОВАНИЯ ВЕЩЕСТВА -->
+<div class="mo" id="ref-edit-m">
+<div class="ml" style="width:720px;max-height:90vh">
+<div class="mh">
+<div class="mtl">Редактировать вещество</div>
+<button class="mc" onclick="cRefEdit()"><svg><use href="#i-x"/></svg></button>
+</div>
+<div class="mb" style="max-height:70vh;overflow-y:auto">
+<input type="hidden" id="ref-edit-id">
+<div class="fr">
+<div class="fg" style="flex:2"><label class="fl">Название *</label><input class="fi" type="text" id="ref-edit-name" required></div>
+<div class="fg"><label class="fl">Категория</label>
+<select class="fi" id="ref-edit-cat">
+<option value="vitamins">Витамины</option>
+<option value="minerals">Минералы</option>
+<option value="alkaloids">Алкалоиды</option>
+<option value="flavonoids">Флавоноиды</option>
+<option value="saponins">Сапонины</option>
+<option value="tannins">Дубильные</option>
+<option value="essentialOils">Эфирные масла</option>
+<option value="glycosides">Гликозиды</option>
+<option value="coumarins">Кумарины</option>
+<option value="organicAcids">Орг. кислоты</option>
+<option value="polysaccharides">Полисахариды</option>
+<option value="anthocyanins">Антоцианы</option>
+</select>
+</div>
+</div>
+<div class="fr">
+<div class="fg"><label class="fl">Химическая формула</label><input class="fi" type="text" id="ref-edit-formula" placeholder="C₆H₈O₆"></div>
+<div class="fg"><label class="fl">Цвет иконки (hex)</label><input class="fi" type="color" id="ref-edit-color" style="height:40px;padding:4px"></div>
+</div>
+<div class="fg"><label class="fl">Описание</label><textarea class="fta" id="ref-edit-desc" rows="3"></textarea></div>
+<div class="fg"><label class="fl">🔬 Роль в организме</label><textarea class="fta" id="ref-edit-role" rows="3"></textarea></div>
+<div class="fg"><label class="fl">⚠️ При дефиците</label><textarea class="fta" id="ref-edit-deficit" rows="3"></textarea></div>
+<div class="fg"><label class="fl">🌿 Источники в травах</label><textarea class="fta" id="ref-edit-sources" rows="2"></textarea></div>
+<div class="fg"><label class="fl">Теги (через запятую)</label><input class="fi" type="text" id="ref-edit-tags" placeholder="иммунитет, антиоксидант"></div>
+<div class="form-actions" style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
+<button class="bt bt2" onclick="cRefEdit()">Отмена</button>
+<button class="bt bt1" onclick="saveRefEdit()">💾 Сохранить</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mo" id="noti-m">
+<div class="ml" style="width:500px">
+<div class="mh">
+<div class="mtl">🔔 Уведомления <span id="noti-count-label" style="font-size:12px;color:var(--tx-m);margin-left:6px"></span></div>
+<button class="mc" onclick="cNotiM()"><svg><use href="#i-x"/></svg></button>
+</div>
+<div class="noti-list" id="noti-list"></div>
+<div class="noti-footer">
+<button class="bt bt2" onclick="markAllRead()" style="font-size:12px;padding:6px 14px">✓ Прочитать все</button>
+<button class="bt bt2" onclick="clearAllNoti()" style="font-size:12px;padding:6px 14px;color:var(--dn)">🗑 Очистить все</button>
+</div>
+</div>
+</div>
+<div class="mo" id="aum"><div class="ml sm"><div class="mh"><div class="mtl">Вход на сайт</div><button class="mc" onclick="cam()"><svg><use href="#i-x"/></svg></button></div><div class="mb"><div class="atabs"><button class="atab on" id="atl" onclick="sat('l')">Вход</button><button class="atab" id="atr" onclick="sat('r')">Регистрация</button></div><div id="aul"><div class="fg"><label class="fl">E-mail</label><input class="fi" type="email" id="le"></div><div class="fg"><label class="fl">Пароль</label><input class="fi" type="password" id="lp" onkeydown="if(event.key==='Enter')dL()"></div><div class="fe" id="le1" style="color:var(--dn);font-size:12px;margin-top:6px;min-height:14px"></div><button class="bt bt1" style="width:100%" onclick="dL()">Войти</button></div><div id="aur" style="display:none"><div class="fg"><label class="fl">Имя</label><input class="fi" type="text" id="rn"></div><div class="fg"><label class="fl">E-mail</label><input class="fi" type="email" id="re"></div><div class="fg"><label class="fl">Пароль</label><input class="fi" type="password" id="rp" onkeydown="if(event.key==='Enter')dR()"></div><div class="fe" id="re1" style="color:var(--dn);font-size:12px;margin-top:6px;min-height:14px"></div><button class="bt bt1" style="width:100%" onclick="dR()">Создать аккаунт</button></div></div></div></div>
+<div class="mo" id="pmm"><div class="ml"><div class="mh"><div class="mtl" id="pm-modal-title">Новая запись</div><button class="mc" onclick="cpm()"><svg><use href="#i-x"/></svg></button></div><div class="mb"><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div class="avatar-wrap" id="pma" style="width:40px;height:40px;font-size:13px;cursor:default"><span class="at">?</span></div><div><div id="pmn" style="font-weight:700;font-size:13px">Имя</div><div style="font-size:11px;color:var(--tx-m)">Публичная запись</div></div></div><textarea class="mta" id="pta" placeholder="Поделитесь рецептом..."></textarea><div class="pua" id="pua"><svg><use href="#i-upload"/></svg><span>Добавить фото</span><input type="file" accept="image/*" multiple id="ppi" onchange="hpp(this)"></div><div class="ppv" id="ppv"></div></div><div class="mf"><button class="bt bt2" onclick="cpm()">Отмена</button><button class="bt bt1" id="pm-submit-btn" onclick="pbP()">Опубликовать</button></div></div></div>
+<div class="mo" id="cmm"><div class="ml" style="width:500px"><div class="mh"><div class="mtl">Комментарии</div><button class="mc" onclick="ccm()"><svg><use href="#i-x"/></svg></button></div><div class="mb" id="cmb-list" style="max-height:400px;overflow-y:auto;padding-top:10px"></div><div style="display:flex;gap:10px;align-items:center;padding:12px 18px;border-top:1px solid var(--bd-l)"><div class="avatar-wrap" id="cma" style="width:34px;height:34px;font-size:11px;cursor:default"><span class="at">?</span></div><input class="ci" type="text" id="cmi" placeholder="Написать комментарий..." onkeydown="if(event.key==='Enter')rA()&&aCM()"><button class="bt bt1" style="padding:8px 16px;border-radius:20px" onclick="rA()&&aCM()"><svg style="width:14px;height:14px;vertical-align:-2px"><use href="#i-send"/></svg></button></div></div></div>
+<div class="mo" id="calm">
+<div class="ml" style="width:480px">
+<div class="mh"><div class="mtl" id="calm-title">Дела</div><button class="mc" onclick="cCalM()"><svg><use href="#i-x"/></svg></button></div>
+<div class="mb">
+<div id="calm-tasks" style="margin-bottom:16px"></div>
+<div class="fst" style="margin-top:0;padding-top:0">Новое дело</div>
+<div class="fg"><input class="fi" type="text" id="cal-task-text" placeholder="Описание дела"></div>
+<div class="fr">
+<div class="fg"><label class="fl">Время</label><input class="fi" type="time" id="cal-task-time"></div>
+<div class="fg"><label class="fl">Приоритет</label><div style="display:flex;gap:6px;padding-top:4px;flex-wrap:wrap" id="cal-colors"></div></div>
+</div>
+<button class="bt bt1" style="width:100%" onclick="aCalTask()">Добавить дело</button>
+</div>
+</div>
+</div>
+<div class="mo" id="stm"><div class="ml sm"><div class="mh"><div class="mtl">Настройки</div><button class="mc" onclick="cSt()"><svg><use href="#i-x"/></svg></button></div><div class="mb"><div class="fst" style="margin-top:0;padding-top:0">Оформление</div><p style="font-size:13px;color:var(--tx-s);margin-bottom:12px">Выберите цветовую тему сайта</p><div class="theme-dots"><div class="td td-l on" onclick="sT('light')"></div><div class="td td-f" onclick="sT('dark-forest')"></div><div class="td td-s" onclick="sT('dark-stone')"></div><div class="td td-n" onclick="sT('dark-night')"></div></div></div></div></div>
+
+<!-- МОДАЛКА ПРОФИЛЯ (РЕЗЮМЕ-СТИЛЬ, БЕЗ ОБЛОЖКИ, АВАТАР ПО ЦЕНТРУ) -->
+<div class="mo" id="prm">
+<div class="ml" style="width:620px;max-height:92vh">
+<div class="mh">
+<div class="mtl">Мой профиль</div>
+<button class="mc" onclick="cprm()"><svg><use href="#i-x"/></svg></button>
+</div>
+<div class="mb" style="max-height:75vh;overflow-y:auto;padding:24px 22px 18px">
+<div class="profile-resume">
+<div class="acw" style="margin:0 auto;position:relative">
+<div class="avatar-wrap" id="pal" style="width:120px;height:120px;font-size:40px;border:4px solid var(--ac);box-shadow:0 8px 24px rgba(58,125,68,.25)"><span class="at">?</span></div>
+<div class="acov" style="border-radius:50%"><input type="file" accept="image/*" onchange="hap(this)"><svg style="width:18px;height:18px"><use href="#i-camera"/></svg><span style="font-size:10px">Сменить фото</span></div>
+</div>
+<h2 id="pr-display-name" style="text-align:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:900;margin-top:16px;color:var(--tx)">Имя пользователя</h2>
+<p id="pr-display-status" style="text-align:center;color:var(--tx-m);font-size:13px;margin-top:4px">Травник</p>
+<p id="pr-display-email" style="text-align:center;color:var(--tx-m);font-size:11px;margin-top:2px;font-style:italic"></p>
+<div id="pr-display-meta" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px"></div>
+</div>
+<div class="pfm" style="padding:18px 0 0">
+<div class="fst" style="margin:8px 0 14px">Личные данные</div>
+<div class="fr">
+<div class="fg"><label class="fl">Имя</label><input class="fi" type="text" id="pfn"></div>
+<div class="fg"><label class="fl">E-mail (логин)</label><input class="fi" type="email" id="pem" readonly style="opacity:.6"></div>
+</div>
+<div class="fg"><label class="fl">Статус / Должность</label><input class="fi" type="text" id="pst" placeholder="Травник, фитотерапевт..."></div>
+<div class="fst">Дополнительно</div>
+<div class="fg"><label class="fl">Город</label><input class="fi" type="text" id="pci" placeholder="Москва"></div>
+<div class="fg"><label class="fl">О себе</label><textarea class="fta" id="pbi" placeholder="Расскажите о своём опыте в травничестве..."></textarea></div>
+<div class="mf" style="padding:14px 0 0;border-top:1px solid var(--bd-l)">
+<button class="bt bt2" onclick="cprm()">Отмена</button>
+<button class="bt bt1" onclick="svP()">💾 Сохранить</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mo" id="img-viewer-m">
+<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;cursor:zoom-out" onclick="cImgV()">
+<button class="mc" style="position:absolute;top:16px;right:16px;z-index:10;background:rgba(0,0,0,.6);color:#fff;width:40px;height:40px;border-radius:50%" onclick="cImgV()"><svg><use href="#i-x"/></svg></button>
+<img id="img-viewer-src" style="max-width:95vw;max-height:90vh;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.6);cursor:default" src="" alt="Фото">
+</div>
+</div>
+<div class="tc" id="tc"></div>
+<script src="app.js"></script>
+</body>
+</html>
