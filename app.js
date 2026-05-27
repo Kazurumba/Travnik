@@ -508,7 +508,7 @@ return menuHTML +
 '<div class="ph"><div class="avatar-wrap" style="width:40px;height:40px;font-size:13px;cursor:default">'+avHtml+'</div>'+
 '<div class="pai"><div class="pa">'+esc(p.author_name||'Аноним')+'</div>'+
 '<div class="pm"><span>'+esc(fmtTimeAgo(p.created_at))+'</span> <svg style="width:10px;height:10px"><use href="#i-globe"/></svg></div></div></div>'+
-th + ih +
+ih + th +
 '<div class="ps"><div style="font-size:11px;color:var(--tx-m)">'+p.likes_count+' нравится</div>'+
 '<div><span>'+cmCount+' комм.</span> · <span>'+p.shares_count+' реп.</span></div></div>'+
 '<div class="pas">'+
